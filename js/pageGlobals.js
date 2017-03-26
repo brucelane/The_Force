@@ -981,12 +981,12 @@ $( document ).ready(function()
                             mCompileTimer = setTimeout(setShaderFromEditor, 200);
     });
     editor.$blockScrolling = Infinity;
-    if (typeof(Storage) !== "undefined" && typeof(localStorage.lastValidCode) !== "undefined"){
+    /*if (typeof(Storage) !== "undefined" && typeof(localStorage.lastValidCode) !== "undefined"){
         editor.setValue(localStorage.lastValidCode,-1);
     }else{
         editor.setValue("void main () {\n\tgl_FragColor = vec4(black, 1.0);\n}", -1);
-    }
-   
+    }*/
+    editor.setValue("void main () {\n\tgl_FragColor = vec4(0.4, 0.0, 0.5, 1.0);\n}", -1);
     // mCodeMirror.on("drop", function( mCodeMirror, event )
     //             {
     //                 event.stopPropagation();
@@ -1045,7 +1045,30 @@ $( document ).ready(function()
                 uiUpdater.displayMessage("Error", loader.errorMessage);
             });
     };
+if (mSound == null)
+    initAudio();
+    audioSource = new SoundCloudAudioSource(player);
+    loadAndUpdate("https://soundcloud.com/batchass/spidermoon");
+    var texture = {};
+    whichSlot = "0";
+    texture.type = "tex_audio";
+    texture.globject =  gl.createTexture();
+    $("#"+whichSlot)
+        .attr('src', 'presets/previz/audio.png')
+        .animate(
+        {
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+        }, .250 );
+    whichSlot = "";
 
+    texture.mData = new Uint8Array(512 * 2);
+    for (var j = 0; j < (512 * 2); j++) 
+    {
+        texture.mData[j] = 0;
+    }
+    createAudioTexture( gl, texture.globject);
+    mInputs[0] = texture;
+    createInputStr();
 form.addEventListener('submit', function(e) {
     initAudio();
     audioSource = new SoundCloudAudioSource(player);
