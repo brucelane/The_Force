@@ -113,6 +113,7 @@ function createGlContext() {
         vsDraw = d[0];
         editor.setValue(w[0])
         editor.gotoLine(2);
+        editor.insert("// Shader created by Bruce Lane");
         var res = newShader(vsDraw, fsNew);
         if (res.mSuccess === false) {
             console.log(res.mInfo);
