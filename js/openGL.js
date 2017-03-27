@@ -112,7 +112,7 @@ function createGlContext() {
         mHeader = h[0];
         vsDraw = d[0];
         editor.setValue(w[0])
-        //setShaderFromEditor();
+        editor.gotoLine(2);
         var res = newShader(vsDraw, fsNew);
         if (res.mSuccess === false) {
             console.log(res.mInfo);

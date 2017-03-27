@@ -1223,7 +1223,7 @@ var SoundCloudAudioSource = function(player) {
  */
 var SoundcloudLoader = function(player,uiUpdater) {
     var self = this;
-    var client_id = "35ea0b79c8a17560443b72c2df925316"; // to get an ID go to http://developers.soundcloud.com/
+    var client_id = "35de6fe71a26e852e6e3526484461b28"; // to get an ID go to http://developers.soundcloud.com/
     this.sound = {};
     this.streamUrl = "";
     this.errorMessage = "";
