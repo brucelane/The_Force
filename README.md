@@ -1,3 +1,15 @@
+# Music visualization shader for the 2017 W3C contest
+
+This is a shader created for the [W3C contest](https://www.w3.org/2017/WWW26/contests.html) by Bruce Lane
+The music is [Batchass - Spidermoon](https://soundcloud.com/batchass/spidermoon)
+The live-coding environment is created by Shawn Lawson and modifyed by Bruce Lane for the W3C contest:
+- load sound on startup
+- load this specific shader on startup
+- the editor is set to read-only (will be done on submission)
+- some code could be added at runtime (to be done)
+
+The rest of this document is from the original repository:
+
 # The Force
 
 Life creates it, makes it grow. Its energy surrounds us and binds us. Luminous beings are we, not this crude matter. You must feel the Force around you; here, between you, me, the tree, the rock, everywhere, yes.
