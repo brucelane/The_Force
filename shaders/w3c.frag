@@ -52,6 +52,9 @@ void main() {
     vec3 c = vec3(originx, originy, originz);
     float r = min(0.08,time/100.0);//*sin(time*0.25)*sin(time*0.25)+0.1;
     vec3 I = vec3(0.,0.,0.);
+    if (time > 177. && time < 203.) {
+        I = vec3(0.1,0.,0.2);
+    }
     I = sphere( c, r, obs, Lpos, uv, vec3(0.2,0.,0.4),Lcol, I ) ;
     int numBranches =int(time/10.);// FINAL int(time/23.);
     int numSph = int(time/5.);
@@ -69,7 +72,7 @@ void main() {
             //vec3 bend = vec3(mx, energyx, energyz)*0.64;
             // first level branches
             c = vec3( posx, posy, posz);
-            I = sphere( c, r, obs, Lpos, uv, vec3(float(k)*0.42,bands.x/1.3,0.4),Lcol, I ) ;
+            I = sphere( c, r, obs, Lpos, uv, vec3(float(k)*0.2,bands.x/1.3,0.4),Lcol, I ) ;
             posx += distfactor * dx[j+int(mod(float(k),4.))].x + energyx/10. ;// + bend.x;//* (mouse.x/mouseFactor/resolution.x - 0.5)
             posy += distfactor * dx[j+int(mod(float(k),8.))].y ;// + bend.y;//* (mouse.y/mouseFactor/resolution.y - 0.5)
             r-=0.0051;
@@ -83,5 +86,14 @@ void main() {
         // screen flicker
         I += 0.005 * sin(time*16.0);
     }
+    // break
+    if (time > 100. && time < 111.) {
+        // scanlines
+        I += 0.1*sin(uv.y*resolution.y*2.0);
+    
+        // screen flicker
+        I += 0.005 * sin(time*16.0);
+    }
+    
 	gl_FragColor = vec4(I*2.9*(bands.x+0.01),1.);
 }

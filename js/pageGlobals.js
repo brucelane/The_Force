@@ -1006,9 +1006,9 @@ $( document ).ready(function()
 
         if($('#soundFile').length) {
         var secs = $('#soundFile').get(0).currentTime;
-      //       var hr  = Math.floor(secs / 3600);
-      var min = Math.floor(secs / 60.);
-      var sec = Math.floor(secs) % 60;
+        //       var hr  = Math.floor(secs / 3600);
+        var min = Math.floor(secs / 60.);
+        var sec = Math.floor(secs) % 60;
 
         if (min < 10)
             min = "0" + min; 
@@ -1093,7 +1093,9 @@ $(document)
         mMouseClickY = event.pageY;
     })
     .mouseup( function( event ) 
-    { })
+    { 
+        console.log(Date.now() - mTime);
+    })
     .keydown( function( event )
     {
         updateKeyboardDown(event.keyCode);
@@ -1211,7 +1213,7 @@ var SoundCloudAudioSource = function(player) {
     this.playStream = function(streamUrl) {
         // get the input stream from the audio element
         player.addEventListener('ended', function(){
-            self.directStream('coasting');
+            // BL error: self.directStream('coasting');
         });
         player.setAttribute('src', streamUrl);
         player.play();
