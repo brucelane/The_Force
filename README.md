@@ -1,12 +1,17 @@
 # Music visualization shader for the 2017 W3C contest
 
-This is a shader created for the [W3C contest](https://www.w3.org/2017/WWW26/contests.html) by Bruce Lane
+This is a shader created specially for the [W3C contest](https://www.w3.org/2017/WWW26/contests.html) by Bruce Lane.
+
+The WebGL Fragment Shader receives uniform variables to bring interactivity:
+- It is audio-reactive: a Fast Fourier Transform is calculated from the sound spectrum at each animation frame (uniform: bands).
+- Rotation with mouse (uniform: mouse)
+- Time-based animation (uniform: time)
+
 The music is [Batchass - Spidermoon](https://soundcloud.com/batchass/spidermoon)
+
 The live-coding environment is created by Shawn Lawson and modifyed by Bruce Lane for the W3C contest:
 - load sound on startup
 - load this specific shader on startup
-- the editor is set to read-only (will be done on submission)
-- some code could be added at runtime (to be done)
 
 The rest of this document is from the original repository:
 

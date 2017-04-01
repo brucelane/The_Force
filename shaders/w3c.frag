@@ -70,7 +70,7 @@ void main() {
     if (time > 177. && time < 203.) {
         I = vec3(0.1,0.,0.2);
     }
-    I = sphere( c, r, obs, Lpos, uv, vec3(0.2,0.,0.4),Lcol, I ) ;
+    I = sphere( c, r, obs, Lpos, uv, vec3(0.2,0.,0.4), Lcol, I ) ;
     int numBranches =int(time/10.);
     int numSph = int(time/5.);
     
@@ -80,7 +80,7 @@ void main() {
         r = min(0.08,time/100.0);
         if (j >= numBranches) { break; }
         
-        uv = rotate(uv, vec2(0.), float(j)*PI/4.);
+        uv = rotate(uv, vec2(0.), float(j)*PI/5.);
         for (int k = 0; k < 12; k++) { 
             if (k >= numSph) { break; }           
             
