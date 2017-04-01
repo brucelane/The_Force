@@ -3,7 +3,7 @@
 This is a shader created specially for the [W3C contest](https://www.w3.org/2017/WWW26/contests.html) by Bruce Lane.
 
 The WebGL Fragment Shader receives uniform variables to bring interactivity:
-- It is audio-reactive: a Fast Fourier Transform is calculated from the sound spectrum at each animation frame (uniform: bands).
+- Audio-reactive: a Fast Fourier Transform is calculated from the sound spectrum at each animation frame (uniform: bands).
 - Rotation with mouse (uniform: mouse)
 - Time-based animation (uniform: time)
 
