@@ -112,11 +112,8 @@ function createGlContext() {
         mHeader = h[0];
         vsDraw = d[0];
         editor.setValue(w[0]);
-        //editor.setReadOnly(true);
         editor.gotoLine(2);
-        editor.insert("// Live coding environment by Shawn Lawson\n");
-        editor.insert("// Shader created by Bruce Lane\n");
-        editor.insert("// Music: Batchass - Spidermoon\n");
+        //editor.setReadOnly(true);
         var res = newShader(vsDraw, fsNew);
         if (res.mSuccess === false) {
             console.log(res.mInfo);
