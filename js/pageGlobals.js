@@ -981,12 +981,12 @@ $( document ).ready(function()
                             mCompileTimer = setTimeout(setShaderFromEditor, 200);
     });
     editor.$blockScrolling = Infinity;
-    if (typeof(Storage) !== "undefined" && typeof(localStorage.lastValidCode) !== "undefined"){
+    /*if (typeof(Storage) !== "undefined" && typeof(localStorage.lastValidCode) !== "undefined"){
         editor.setValue(localStorage.lastValidCode,-1);
     }else{
         editor.setValue("void main () {\n\tgl_FragColor = vec4(black, 1.0);\n}", -1);
-    }
-   
+    }*/
+    editor.setValue("void main () {\n\tgl_FragColor = vec4(0.4, 0.0, 0.5, 1.0);\n}", -1);
     // mCodeMirror.on("drop", function( mCodeMirror, event )
     //             {
     //                 event.stopPropagation();
@@ -1006,9 +1006,9 @@ $( document ).ready(function()
 
         if($('#soundFile').length) {
         var secs = $('#soundFile').get(0).currentTime;
-      //       var hr  = Math.floor(secs / 3600);
-      var min = Math.floor(secs / 60.);
-      var sec = Math.floor(secs) % 60;
+        //       var hr  = Math.floor(secs / 3600);
+        var min = Math.floor(secs / 60.);
+        var sec = Math.floor(secs) % 60;
 
         if (min < 10)
             min = "0" + min; 
@@ -1045,7 +1045,30 @@ $( document ).ready(function()
                 uiUpdater.displayMessage("Error", loader.errorMessage);
             });
     };
+if (mSound == null)
+    initAudio();
+    audioSource = new SoundCloudAudioSource(player);
+    loadAndUpdate("https://soundcloud.com/batchass/spidermoon");
+    var texture = {};
+    whichSlot = "0";
+    texture.type = "tex_audio";
+    texture.globject =  gl.createTexture();
+    $("#"+whichSlot)
+        .attr('src', 'presets/previz/audio.png')
+        .animate(
+        {
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+        }, .250 );
+    whichSlot = "";
 
+    texture.mData = new Uint8Array(512 * 2);
+    for (var j = 0; j < (512 * 2); j++) 
+    {
+        texture.mData[j] = 0;
+    }
+    createAudioTexture( gl, texture.globject);
+    mInputs[0] = texture;
+    createInputStr();
 form.addEventListener('submit', function(e) {
     initAudio();
     audioSource = new SoundCloudAudioSource(player);
@@ -1070,7 +1093,9 @@ $(document)
         mMouseClickY = event.pageY;
     })
     .mouseup( function( event ) 
-    { })
+    { 
+        console.log(Date.now() - mTime);
+    })
     .keydown( function( event )
     {
         updateKeyboardDown(event.keyCode);
@@ -1188,7 +1213,7 @@ var SoundCloudAudioSource = function(player) {
     this.playStream = function(streamUrl) {
         // get the input stream from the audio element
         player.addEventListener('ended', function(){
-            self.directStream('coasting');
+            // BL error: self.directStream('coasting');
         });
         player.setAttribute('src', streamUrl);
         player.play();
@@ -1200,7 +1225,7 @@ var SoundCloudAudioSource = function(player) {
  */
 var SoundcloudLoader = function(player,uiUpdater) {
     var self = this;
-    var client_id = "35ea0b79c8a17560443b72c2df925316"; // to get an ID go to http://developers.soundcloud.com/
+    var client_id = "35de6fe71a26e852e6e3526484461b28"; // to get an ID go to http://developers.soundcloud.com/
     this.sound = {};
     this.streamUrl = "";
     this.errorMessage = "";
